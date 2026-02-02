@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&display=swap');
+
+body {
+background-color: #2596be;
+color: white;
+}
+
+h1{
+    text-align: center;
+    font-family: "Story Script", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h3{
+    font-family: "Asimovian", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.row {
+    display:flex;
+  }
+    
+  .column {
+    flex: 33.33%;
+  }
+
