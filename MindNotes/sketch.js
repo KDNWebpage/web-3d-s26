@@ -12,7 +12,8 @@ var s1 = function( sketch ) {
   };
   sketch.setup = function() {
     let canvas1 = sketch.createCanvas(200, 250, sketch.WEBGL);
-    canvas1.position(475,100);
+    canvas1.parent('sketch-holder1');
+    canvas1.position(495,170);
     sketch.angleMode(sketch.DEGREES);
   };
   sketch.draw = function() {
