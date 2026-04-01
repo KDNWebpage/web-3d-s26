@@ -10,6 +10,7 @@ import * as THREE from 'three';
 
 // The plug-in for orbit controls
 import { OrbitControls } from './src/OrbitControls.js';
+import { FontLoader } from "./src/FontLoader.js";
 
 //The plug-in for First Person Controls
 import { PointerLockControls } from './src/PointerLockControls.js';
@@ -161,8 +162,77 @@ controls.lock();
 
     //End of First person setup
 
+	// Add font and text
+	const loader = new FontLoader();
+	loader.load('./PublicSans-Bold.json', function ( font ) {
+		
+		// create color and material
+		const color = 0x006699;
+		const matDark = new THREE.LineBasicMaterial( {
+			color: color,
+			side: THREE.DoubleSide
+		});
+		
+		const matLite = new THREE.MeshBasicMaterial( {
+			color: color,
+			transparent: true,
+			opacity: 0.4,
+			side: THREE.DoubleSide
+		});
+		
+		// create message/text
+		const message = "March 24th\nDemo";
+		
+		// create shapes from font and message
+		const shapes = font.generateShapes(message, 40);
+		const fontGeo = new THREE.ShapeGeometry( shapes );
+		fontGeo.computeBoundingBox();
+		
+		// center alignment
+		const xMid = - 0.5 * ( fontGeo.boundingBox.max.x - fontGeo.boundingBox.min.x );
+		fontGeo.translate( xMid, 0, 0 );
+		
+		// add objects to scene
+		const text = new THREE.Mesh (fontGeo, matLite );
+		text.position.z = -200;
+		text.posotion.y = 50;
+		scene.add( text );
+		
+	} );
+	
+	
     // Add world geometry
-
+	
+	
+// March 24 example material and object
+	
+	// donut shape
+	const donut = new THREE.TorusGeometry( 50, 20, 16, 100);
+	
+	// donut solid color
+	const donutMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00 });
+	const torus = new THREE.Mesh( donut, donutMaterial );
+	torus.position.z = -250;
+	torus.position.y = 50;
+	scene.add ( torus );
+	
+	// donut line color
+	const donutLine = new THREE.MeshBasicMaterial( {color: 0x000000, wireframe: true});
+	const torusLine = new THREE.Mesh( donut, donutLine );
+	torusLine.position.z = -250;
+	torusLine.position.y = 50;
+	scene.add ( torusLine );
+	
+	// torus knot shape
+	const coolShape = new THREE.TorusKnotGeometry( 10, 3, 100, 16);
+	
+	// torus knot color
+	const knotColor = new THREE.MeshPhongMaterial ( {color: 0x7f01a2});
+	const knotShape = new THREE.Mesh( coolShape, knotColor );
+	knotShape.position.z = -300;
+	knotShape.position.y = 50;
+	scene.add( knotShape );
+	
     // Grouping of trees
     const geometry = new THREE.ConeGeometry( 10, 60, 8, 1 );
     const material = new THREE.MeshPhongMaterial( { color: 0x14401e, flatShading: true } );

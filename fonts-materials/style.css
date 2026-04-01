@@ -4,8 +4,8 @@
 }
 
 body {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
   padding: 0;
   margin: 0;
 }
@@ -76,22 +76,22 @@ canvas {
 }
 
 #blocker {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0,0,0,0.5);
-			}
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
 
-			#instructions {
-				width: 100%;
-				height: 100%;
+#instructions {
+    width: 100%;
+    height: 100%;
 
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-				text-align: center;
-				font-size: 14px;
-				cursor: pointer;
-			}
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+}
