@@ -305,7 +305,7 @@ function init() {
     // image
 
     // load image as a texture
-    const imgSource = new THREE.TextureLoader().load("./Assets/Cat.jpeg");
+    const imgSource = new THREE.TextureLoader().load("./assets/Cat.jpeg");
 	imgSource.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial = new THREE.MeshBasicMaterial({
@@ -320,7 +320,7 @@ function init() {
     scene.add(imgPlane);
 	
 	// image 2
-	const imgSource2 = new THREE.TextureLoader().load("./Assets/Billie.jpg");
+	const imgSource2 = new THREE.TextureLoader().load("./assets/Billie.jpg");
 	imgSource2.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial2 = new THREE.MeshBasicMaterial({
@@ -336,7 +336,7 @@ function init() {
     scene.add(imgPlane2);
 	
 	// image 3
-	const imgSource3 = new THREE.TextureLoader().load("./Assets/Ariana.jpg");
+	const imgSource3 = new THREE.TextureLoader().load("./assets/Ariana.jpg");
 	imgSource3.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial3 = new THREE.MeshBasicMaterial({
@@ -352,7 +352,7 @@ function init() {
     scene.add(imgPlane3);
 	
 	// image 4
-	const imgSource4 = new THREE.TextureLoader().load("./Assets/Gigi.jpg");
+	const imgSource4 = new THREE.TextureLoader().load("./assets/Gigi.jpg");
 	imgSource4.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial4 = new THREE.MeshBasicMaterial({
@@ -368,7 +368,7 @@ function init() {
     scene.add(imgPlane4);
 	
 	// image 5
-	const imgSource5 = new THREE.TextureLoader().load("./Assets/Gracie.jpg");
+	const imgSource5 = new THREE.TextureLoader().load("./assets/Gracie.jpg");
 	imgSource5.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial5 = new THREE.MeshBasicMaterial({
@@ -383,7 +383,7 @@ function init() {
     scene.add(imgPlane5);
 	
 	// image 6
-	const imgSource6 = new THREE.TextureLoader().load("./Assets/Taylor.jpg");
+	const imgSource6 = new THREE.TextureLoader().load("./assets/Taylor.jpg");
 	imgSource6.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial6 = new THREE.MeshBasicMaterial({
@@ -398,7 +398,7 @@ function init() {
     scene.add(imgPlane6);
 	
 	// image 7
-	const imgSource7 = new THREE.TextureLoader().load("./Assets/Raye.jpeg");
+	const imgSource7 = new THREE.TextureLoader().load("./assets/Raye.jpeg");
 	imgSource7.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial7 = new THREE.MeshBasicMaterial({
@@ -414,7 +414,7 @@ function init() {
     scene.add(imgPlane7);
 	
 	// image 8
-	const imgSource8 = new THREE.TextureLoader().load("./Assets/Sabrina.jpg");
+	const imgSource8 = new THREE.TextureLoader().load("./assets/Sabrina.jpg");
 	imgSource8.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial8 = new THREE.MeshBasicMaterial({
@@ -430,7 +430,7 @@ function init() {
     scene.add(imgPlane8);
 	
 	// image 9
-	const imgSource9 = new THREE.TextureLoader().load("./Assets/HMHAS_tour.jpg");
+	const imgSource9 = new THREE.TextureLoader().load("./assets/HMHAS_tour.jpg");
 	imgSource9.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial9 = new THREE.MeshBasicMaterial({
@@ -446,7 +446,7 @@ function init() {
     scene.add(imgPlane9);
 	
 	// image 10
-	const imgSource10 = new THREE.TextureLoader().load("./Assets/blair_witch.jpg");
+	const imgSource10 = new THREE.TextureLoader().load("./assets/blair_witch.jpg");
 	imgSource10.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial10 = new THREE.MeshBasicMaterial({
@@ -462,7 +462,7 @@ function init() {
     scene.add(imgPlane10);
 	
 	// image 11
-	const imgSource11 = new THREE.TextureLoader().load("./Assets/scream_six.jpg");
+	const imgSource11 = new THREE.TextureLoader().load("./assets/scream_six.jpg");
 	imgSource11.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial11 = new THREE.MeshBasicMaterial({
@@ -478,7 +478,7 @@ function init() {
     scene.add(imgPlane11);
 	
 	// image 12
-	const imgSource12 = new THREE.TextureLoader().load("./Assets/Strangers.jpg");
+	const imgSource12 = new THREE.TextureLoader().load("./assets/Strangers.jpg");
 	imgSource12.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial12 = new THREE.MeshBasicMaterial({
@@ -494,7 +494,7 @@ function init() {
     scene.add(imgPlane12);
 	
 	// image 13
-	const imgSource13 = new THREE.TextureLoader().load("./Assets/thunderbolts.jpg");
+	const imgSource13 = new THREE.TextureLoader().load("./assets/thunderbolts.jpg");
 	imgSource13.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial13 = new THREE.MeshBasicMaterial({
@@ -510,7 +510,7 @@ function init() {
     scene.add(imgPlane13);
 	
 	// image 14
-	const imgSource14 = new THREE.TextureLoader().load("./Assets/GOTG.jpg");
+	const imgSource14 = new THREE.TextureLoader().load("./assets/GOTG.jpg");
 	imgSource14.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial14 = new THREE.MeshBasicMaterial({
@@ -526,7 +526,7 @@ function init() {
     scene.add(imgPlane14);
 	
 	// image 15
-	const imgSource15 = new THREE.TextureLoader().load("./Assets/Duck1.jpeg");
+	const imgSource15 = new THREE.TextureLoader().load("./assets/Duck1.jpeg");
 	imgSource15.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial15 = new THREE.MeshBasicMaterial({
@@ -542,7 +542,7 @@ function init() {
     scene.add(imgPlane15);
 	
 	// image 16
-	const imgSource16 = new THREE.TextureLoader().load("./Assets/Duck2.jpeg");
+	const imgSource16 = new THREE.TextureLoader().load("./assets/Duck2.jpeg");
 	imgSource16.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial16 = new THREE.MeshBasicMaterial({
@@ -558,14 +558,14 @@ function init() {
     scene.add(imgPlane16);
 	
 	// image 17
-	const imgSource17 = new THREE.TextureLoader().load("./Assets/Duck3.jpeg");
+	const imgSource17 = new THREE.TextureLoader().load("./assets/Duck3.jpeg");
 	imgSource17.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial17 = new THREE.MeshBasicMaterial({
         map: imgSource17,
         side: THREE.DoubleSide
     });
-    // create image shape (should be the same aspect ratio as the image)
+    // create image shape (should be the same aspect ratio as the imagea
     const imgGeometry17 = new THREE.PlaneGeometry(12, 12);
     // apply image to shape and add to scene
     const imgPlane17 = new THREE.Mesh(imgGeometry17, imgMaterial17);
@@ -574,7 +574,7 @@ function init() {
     scene.add(imgPlane17);
 	
 	// image 18
-	const imgSource18 = new THREE.TextureLoader().load("./Assets/Duck3.jpeg");
+	const imgSource18 = new THREE.TextureLoader().load("./assets/Duck3.jpeg");
 	imgSource18.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial18 = new THREE.MeshBasicMaterial({
@@ -590,7 +590,7 @@ function init() {
     scene.add(imgPlane18);
 	
 	// image 19
-	const imgSource19 = new THREE.TextureLoader().load("./Assets/Duck4.jpeg");
+	const imgSource19 = new THREE.TextureLoader().load("./assets/Duck4.jpeg");
 	imgSource19.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial19 = new THREE.MeshBasicMaterial({
@@ -606,7 +606,7 @@ function init() {
     scene.add(imgPlane19);
 	
 	// image 20
-	const imgSource20 = new THREE.TextureLoader().load("./Assets/Duck5.jpeg");
+	const imgSource20 = new THREE.TextureLoader().load("./assets/Duck5.jpeg");
 	imgSource20.colorSpace = THREE.SRGBColorSpace;
     // use loaded testure in a material
     const imgMaterial20 = new THREE.MeshBasicMaterial({
