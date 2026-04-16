@@ -160,7 +160,7 @@ function init() {
         });
 
         // create message
-        const message = "March 24th Demo";
+        const message = "What on Earth is this?";
         
         // generate text shapes
         const shapes = font.generateShapes(message, 30);
@@ -214,11 +214,50 @@ function init() {
 	const ring = new THREE.RingGeometry( 10, 50, 32 );
 	
 	// ring color
-	const ringMaterial = new THREE.MeshBasicMaterial( { color: 0x890aa4, side: THREE.DoubleSide } );
+	const ringMaterial = new THREE.MeshBasicMaterial( { color: 0x890aa4, side: THREE.DoubleSide} );
 	const ringShape = new THREE.Mesh( ring, ringMaterial );
-	ringShape.position.z = -500;
+	ringShape.position.z = -225;
 	ringShape.position.y = 100;
 	scene.add( ringShape );
+	
+	const cylinder = new THREE.CylinderGeometry( 5, 5, 20, 32 );
+	const cylinderMaterial = new THREE.MeshBasicMaterial( { color: 0x00e7ff } );
+	const cylinderShape = new THREE.Mesh( cylinder, cylinderMaterial );
+	cylinderShape.position.z = -50;
+	cylinderShape.position.x = -50;
+	scene.add( cylinderShape );
+	
+	class CustomSinCurve extends THREE.Curve {
+	getPoint( t, optionalTarget = new THREE.Vector3() ) {
+		const tx = t * 3 - 1.5;
+		const ty = Math.sin( 2 * Math.PI * t );
+		const tz = 0;
+		return optionalTarget.set( tx, ty, tz );
+	}
+}
+	const path = new CustomSinCurve( 10 );
+	const geometry = new THREE.TubeGeometry( path, 20, 2, 8, false );
+	const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+	const mesh = new THREE.Mesh( geometry, material );
+	mesh.position.x = 20;
+	mesh.position.z = -20;
+	mesh.position.y = 20;
+	scene.add( mesh );
+	
+	const tetrahedron = new THREE.TetrahedronGeometry();
+	const tetrahedronMaterial = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+	const tetrahedronShape = new THREE.Mesh( tetrahedron, tetrahedronMaterial );
+	tetrahedronShape.position.z = -250;
+    tetrahedronShape.position.y = 50;
+	tetrahedronShape.position.x = -20;
+	scene.add( tetrahedronShape );
+	
+	const sphere = new THREE.SphereGeometry( 15, 32, 16 );
+	const sphereMaterial = new THREE.MeshBasicMaterial( { color: 0xd900b3, wireframe: true } );
+	const sphereShape = new THREE.Mesh( sphere, sphereMaterial );
+	sphereShape.position.z = -50;
+	scene.add( sphereShape );
+	
 
     // Ground
     const earth = new THREE.PlaneGeometry(4000, 4000);
