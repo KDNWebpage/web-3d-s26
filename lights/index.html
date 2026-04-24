@@ -24,7 +24,6 @@
 			import { OrbitControls } from './src/OrbitControls.js';
 			import { GLTFLoader } from './src/GLTFLoader.js';
 			
-			let building;
 
 			const renderer = new THREE.WebGLRenderer( { antialias: true } );
 			renderer.setPixelRatio( window.devicePixelRatio );
@@ -39,6 +38,7 @@
 
 			const matFloor = new THREE.MeshPhongMaterial( { color: 0x808080 } );
 			const matBox = new THREE.MeshPhongMaterial( { color: 0xaaaaaa } );
+			
 
 			const geoFloor = new THREE.PlaneGeometry( 100, 100 );
 			const geoBox = new THREE.BoxGeometry( 0.3, 0.1, 0.2 );
@@ -53,7 +53,7 @@
 			const spotLight2 = createSpotlight( 0x00FF7F );
 			const spotLight3 = createSpotlight( 0x7F00FF );
 
-			let lightHelper1, lightHelper2, lightHelper3;
+			let lightHelper1, lightHelper2, lightHelper3, building;
 
 			function init() {
 
@@ -72,6 +72,7 @@
 
 				mshFloor.receiveShadow = true;
 				mshFloor.position.set( 0, - 0.05, 0 );
+				
 
 				//mshBox.castShadow = true;
 				//mshBox.receiveShadow = true;
@@ -82,6 +83,9 @@
 				scene.add( ambient );
 				scene.add( spotLight1, spotLight2, spotLight3 );
 				scene.add( lightHelper1, lightHelper2, lightHelper3 );
+				spotLight1.scale.set (100, 100, 100);
+				lightHelper1.scale.set (100, 100, 100);
+				
 
 				document.body.appendChild( renderer.domElement );
 				window.addEventListener( 'resize', onWindowResize );
@@ -96,12 +100,23 @@
 			
 			//3D Models
 			const loader = new GLTFLoader();
-		loader.load( './assets/tester.glb', function ( gltf ) {
+		loader.load( './assets/stage.glb', function ( gltf ) {
 
             building = gltf.scene;
-            building.scale.set (1,1,1);
+            building.scale.set (0.6,0.6,0.6);
             building.position.set(0,0,0);
+			building.receiveShadow = true;
+			building.traverse((child) => {
+			if (child.isMesh) {
+				child.castShadow = true;
+				child.receiveShadow = true;
+				// Optionally, you can modify specific properties
+				// child.material.wireframe = true;
+			}
+		});
+
             scene.add( building ); 
+			
 
             //createGUI( bear, gltf.animations );
 
@@ -142,13 +157,36 @@
 					.easing( TWEEN.Easing.Quadratic.Out ).start();
 
 				new TWEEN.Tween( light.position ).to( {
-					x: ( Math.random() * 3 ) - 1.5,
-					y: ( Math.random() * 1 ) + 1.5,
-					z: ( Math.random() * 3 ) - 1.5
+					x: ( Math.random() * 6 ) - 1.5,
+					y: ( Math.random() * 2 ) + 1.5,
+					z: ( Math.random() * 6 ) - 1.5
 				}, Math.random() * 3000 + 2000 )
 					.easing( TWEEN.Easing.Quadratic.Out ).start();
 
 			}
+			
+			//Lights__________
+			const glowBalls = new THREE.Group();
+			scene.add(glowBalls);
+
+			for (let i = 0; i < 9000; i++) {
+				const color = new THREE.Color(Math.random() * 0xffffff);
+
+				const ball = new THREE.Mesh(
+					new THREE.SphereGeometry(0.03, 16, 8),
+					new THREE.MeshBasicMaterial({ color: color })
+				);
+
+				ball.position.set(
+					Math.random() * 100 - 50,
+					0.08,
+					Math.random() * 100 - 50
+				);
+
+				glowBalls.add(ball);
+			}
+			
+			
 
 			function updateTweens() {
 
@@ -167,6 +205,12 @@
 				if ( lightHelper1 ) lightHelper1.update();
 				if ( lightHelper2 ) lightHelper2.update();
 				if ( lightHelper3 ) lightHelper3.update();
+				
+				const time = performance.now() * 0.001;
+
+				glowBalls.children.forEach((ball, i) => {
+					ball.position.y = 0.08 + Math.sin(time * 2 + i) * 0.03;
+				});
 
 				renderer.render( scene, camera );
 
