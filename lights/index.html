@@ -30,7 +30,8 @@
 			renderer.setSize( window.innerWidth, window.innerHeight );
 			renderer.setAnimationLoop( animate );
 
-			const camera = new THREE.PerspectiveCamera( 35, window.innerWidth / window.innerHeight, 0.1, 100 );
+			const camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.5, 300 );
+			
 
 			const controls = new OrbitControls( camera, renderer.domElement );
 
@@ -53,7 +54,7 @@
 			const spotLight2 = createSpotlight( 0x00FF7F );
 			const spotLight3 = createSpotlight( 0x7F00FF );
 
-			let lightHelper1, lightHelper2, lightHelper3, building;
+			let lightHelper1, lightHelper2, lightHelper3, billie, building;
 
 			function init() {
 
@@ -116,8 +117,30 @@
 		});
 
             scene.add( building ); 
-			
+            //createGUI( bear, gltf.animations );
 
+        }, undefined, function ( e ) {
+
+            console.error( e );
+
+        } );  
+			
+		loader.load( './assets/billie_eilish.glb', function ( gltf ) {
+
+            billie = gltf.scene;
+            billie.scale.set (0.3,0.3,0.3);
+            billie.position.set(0,0.45,0);
+			billie.receiveShadow = true;
+			billie.traverse((child) => {
+			if (child.isMesh) {
+				child.castShadow = true;
+				child.receiveShadow = true;
+				// Optionally, you can modify specific properties
+				// child.material.wireframe = true;
+			}
+		});
+
+            scene.add( billie ); 
             //createGUI( bear, gltf.animations );
 
         }, undefined, function ( e ) {
@@ -169,7 +192,7 @@
 			const glowBalls = new THREE.Group();
 			scene.add(glowBalls);
 
-			for (let i = 0; i < 9000; i++) {
+			for (let i = 0; i < 9999; i++) {
 				const color = new THREE.Color(Math.random() * 0xffffff);
 
 				const ball = new THREE.Mesh(
@@ -178,9 +201,9 @@
 				);
 
 				ball.position.set(
-					Math.random() * 100 - 50,
+					Math.random() * 30 - 15,
 					0.08,
-					Math.random() * 100 - 50
+					Math.random() * 30 - 15
 				);
 
 				glowBalls.add(ball);
