@@ -148,6 +148,84 @@
             console.error( e );
 
         } );  
+			 const listener = new THREE.AudioListener();
+camera.add(listener);
+
+const audioLoader = new THREE.AudioLoader();
+const backgroundSound = new THREE.Audio(listener);
+
+audioLoader.load('./assets/intro.mp3', function(buffer) {
+	backgroundSound.setBuffer(buffer);
+	backgroundSound.setLoop(true);
+	backgroundSound.setVolume(0.4);
+
+	// Try autoplay if user already allowed it before
+	if (localStorage.getItem("audioEnabled") === "true") {
+		if (listener.context.state === "suspended") {
+			listener.context.resume().then(() => {
+				backgroundSound.play();
+			});
+		} else {
+			backgroundSound.play();
+		}
+	}
+});
+	
+	document.addEventListener("click", () => {
+	localStorage.setItem("audioEnabled", "true");
+
+	if (listener.context.state === "suspended") {
+		listener.context.resume().then(() => {
+			if (!backgroundSound.isPlaying) {
+				backgroundSound.play();
+			}
+		});
+	} else {
+		if (!backgroundSound.isPlaying) {
+			backgroundSound.play();
+		}
+	}
+}, { once: true });
+			
+			const video = document.createElement('video');
+			video.src = './assets/Billie_Eilish.mp4'; // your downloaded video
+			video.loop = true;
+			video.muted = true;
+			video.play();
+			
+			const videoTexture = new THREE.VideoTexture(video);
+			videoTexture.minFilter = THREE.LinearFilter;
+			videoTexture.magFilter = THREE.LinearFilter;
+			videoTexture.format = THREE.RGBAFormat;
+			
+			const screenGeometry = new THREE.PlaneGeometry(3, 2); // adjust size
+			const screenMaterial = new THREE.MeshBasicMaterial({
+				map: videoTexture
+			});
+
+			const screen1 = new THREE.Mesh(screenGeometry, screenMaterial);
+			screen1.position.set(0, 3, -1.5);
+			screen1.rotation.y = Math.PI;
+
+			// front left screen
+			const screen2 = new THREE.Mesh(screenGeometry, screenMaterial);
+			screen2.position.set(-1.5, 3, 0);
+			screen2.rotation.y = Math.PI / -2;
+
+			// front middle screen
+			const screen3 = new THREE.Mesh(screenGeometry, screenMaterial);
+			screen3.position.set(0, 3, 1.5);
+
+			// front right screen
+			const screen4 = new THREE.Mesh(screenGeometry, screenMaterial);
+			screen4.position.set(1.5, 3, 0);
+			screen4.rotation.y = Math.PI / 2;
+
+			scene.add(screen1, screen2, screen3, screen4);
+
+			
+			
+			
 
 			function createSpotlight( color ) {
 
