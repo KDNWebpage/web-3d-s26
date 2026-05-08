@@ -53,8 +53,11 @@
 			const spotLight1 = createSpotlight( 0xFF7F00 );
 			const spotLight2 = createSpotlight( 0x00FF7F );
 			const spotLight3 = createSpotlight( 0x7F00FF );
+			const spotLight4 = createSpotlight( 0xFF0000 );
+			const spotLight5 = createSpotlight( 0x00FFFF );
+			const spotLight6 = createSpotlight( 0xFFFF00 );
 
-			let lightHelper1, lightHelper2, lightHelper3, billie, building;
+			let lightHelper1, lightHelper2, lightHelper3, lightHelper4, lightHelper5, lightHelper6, billie, building;
 
 			function init() {
 
@@ -66,10 +69,16 @@
 				spotLight1.position.set( 1.5, 4, 4.5 );
 				spotLight2.position.set( 0, 4, 3.5 );
 				spotLight3.position.set( - 1.5, 4, 4.5 );
+				spotLight4.position.set( -4.5, 4, 2 );
+				spotLight5.position.set( 4.5, 4, 2 );
+				spotLight6.position.set( 0, 5, -2 );
 
 				lightHelper1 = new THREE.SpotLightHelper( spotLight1 );
 				lightHelper2 = new THREE.SpotLightHelper( spotLight2 );
 				lightHelper3 = new THREE.SpotLightHelper( spotLight3 );
+				lightHelper4 = new THREE.SpotLightHelper( spotLight4 );
+				lightHelper5 = new THREE.SpotLightHelper( spotLight5 );
+				lightHelper6 = new THREE.SpotLightHelper( spotLight6 );
 
 				mshFloor.receiveShadow = true;
 				mshFloor.position.set( 0, - 0.05, 0 );
@@ -82,8 +91,8 @@
 				scene.add( mshFloor );
 				//scene.add( mshBox );
 				scene.add( ambient );
-				scene.add( spotLight1, spotLight2, spotLight3 );
-				scene.add( lightHelper1, lightHelper2, lightHelper3 );
+				scene.add( spotLight1, spotLight2, spotLight3, spotLight4, spotLight5, spotLight6);
+				scene.add( lightHelper1, lightHelper2, lightHelper3, lightHelper4, lightHelper5, lightHelper6);
 				spotLight1.scale.set (100, 100, 100);
 				lightHelper1.scale.set (100, 100, 100);
 				
@@ -258,17 +267,34 @@ audioLoader.load('./assets/intro.mp3', function(buffer) {
 					.easing( TWEEN.Easing.Quadratic.Out ).start();
 
 				new TWEEN.Tween( light.position ).to( {
+					x: ( Math.random() * 6 ) - 1.5,
+					y: ( Math.random() * 2 ) + 1.5,
+					z: ( Math.random() * 6) - 1.5
+				}, Math.random() * 3000 + 2000 )
+					.easing( TWEEN.Easing.Quadratic.Out ).start();
+
+			}
+			
+			function tween2( light ) {
+
+				new TWEEN.Tween( light ).to( {
+					angle: ( Math.random() * 0.7 ) + 0.1,
+					penumbra: Math.random() + 1
+				}, Math.random() * 3000 + 2000 )
+					.easing( TWEEN.Easing.Quadratic.Out ).start();
+
+				new TWEEN.Tween( light.position ).to( {
 					x: ( Math.random() * 30 ) - 15,
 					y: ( Math.random() * 15 ) + 5,
-					z: ( Math.random() * 30) - 15
+					z: ( Math.random() * 30 ) - 15
 				}, Math.random() * 3000 + 2000 )
 					.easing( TWEEN.Easing.Quadratic.Out ).start();
 
 			}
 			
 		
-			const color = 0xcccccc;
-			const density = 0.5; // Use a very low number for "slight"
+			const color = 0x200ec5;
+			const density = 0.08; // Use a very low number for "slight"
 			scene.fog = new THREE.FogExp2(color, density);
 			
 			
@@ -300,6 +326,9 @@ audioLoader.load('./assets/intro.mp3', function(buffer) {
 				tween( spotLight1 );
 				tween( spotLight2 );
 				tween( spotLight3 );
+				tween2( spotLight4 );
+				tween2( spotLight5 );
+				tween2( spotLight6 );
 
 				setTimeout( updateTweens, 5000 );
 
@@ -312,6 +341,9 @@ audioLoader.load('./assets/intro.mp3', function(buffer) {
 				if ( lightHelper1 ) lightHelper1.update();
 				if ( lightHelper2 ) lightHelper2.update();
 				if ( lightHelper3 ) lightHelper3.update();
+				if ( lightHelper4 ) lightHelper4.update();
+				if ( lightHelper5 ) lightHelper5.update();
+				if ( lightHelper6 ) lightHelper6.update();
 				
 				const time = performance.now() * 0.001;
 
