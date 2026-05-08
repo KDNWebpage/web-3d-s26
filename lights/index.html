@@ -188,7 +188,7 @@ audioLoader.load('./assets/intro.mp3', function(buffer) {
 }, { once: true });
 			
 			const video = document.createElement('video');
-			video.src = './assets/Billie_Eilish.mp4'; // your downloaded video
+			video.src = './assets/Billie_Eilish.mp4'; 
 			video.loop = true;
 			video.muted = true;
 			video.play();
@@ -258,13 +258,19 @@ audioLoader.load('./assets/intro.mp3', function(buffer) {
 					.easing( TWEEN.Easing.Quadratic.Out ).start();
 
 				new TWEEN.Tween( light.position ).to( {
-					x: ( Math.random() * 6 ) - 1.5,
-					y: ( Math.random() * 2 ) + 1.5,
-					z: ( Math.random() * 6 ) - 1.5
+					x: ( Math.random() * 30 ) - 15,
+					y: ( Math.random() * 15 ) + 5,
+					z: ( Math.random() * 30) - 15
 				}, Math.random() * 3000 + 2000 )
 					.easing( TWEEN.Easing.Quadratic.Out ).start();
 
 			}
+			
+		
+			const color = 0xcccccc;
+			const density = 0.5; // Use a very low number for "slight"
+			scene.fog = new THREE.FogExp2(color, density);
+			
 			
 			//Lights__________
 			const glowBalls = new THREE.Group();
