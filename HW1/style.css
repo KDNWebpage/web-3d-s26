@@ -50,11 +50,20 @@ a{
 }
 
  .row {
-    display:flex;
+   display:flex;
+   justify-content: center;
+   gap: 140px;
+  }
+.top-row {
+   margin-top: 70px
+  }
+.bottom-row {
+   margin-top: 90px
   }
     
   .column {
-    flex: 33.33%;
+    display: flex;
+    justify-content: center;
   }
 
 .my_img{
